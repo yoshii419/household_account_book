@@ -1,39 +1,21 @@
 <template>
   <v-app>
+    <!-- ツールバー -->
     <v-app-bar
       app
-      color="primary"
+      color="green"
       dark
     >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
+      <!-- タイトル -->
+      <v-toolbar-title>{{ appName }}</v-toolbar-title>
+      <v-spacer/>
+      <!-- テーブルアイコンのボタン -->
+      <v-btn icon to="/">
+        <v-icon>mdi-file-table-outline</v-icon>
+      </v-btn>
+      <!-- 歯車アイコンのボタン -->
+      <v-btn icon to="/settings">
+        <v-icon>mdi-cog</v-icon>
       </v-btn>
     </v-app-bar>
 
@@ -44,12 +26,18 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 
 export default {
   name: 'App',
 
-  data: () => ({
-    //
+  computed: mapState({
+    appName: state => state.settings.appName
   }),
-};
+
+  // Appインスタンス生成前に一度だけ実行されます
+  beforeCreate () {
+    this.$store.dispatch('loadSettings')
+  }
+}
 </script>
