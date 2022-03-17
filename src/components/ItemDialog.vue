@@ -97,18 +97,15 @@
       </v-card-text>
       <v-divider/>
       <v-card-actions>
-        <v-spacer/>
         <v-btn
-          color="grey darken-1"
-          text
           :disabled="loading"
           @click="onClickClose"
         >
           キャンセル
         </v-btn>
+        <v-spacer/>
         <v-btn
-          color="blue darken-1"
-          text
+          color="primary"
           :disabled="!valid"
           :loading="loading"
           @click="onClickAction"
@@ -165,7 +162,6 @@ export default {
       tagRule: v => v.length <= 5 || 'タグは5種類以内で選択してください',
       amountRules: [
         v => v >= 0 || '金額は0以上で入力してください',
-        v => Number.isInteger(v) || '整数で入力してください'
       ],
       memoRule: v => v.length <= 50 || 'メモは50文字以内で入力してください'
     }

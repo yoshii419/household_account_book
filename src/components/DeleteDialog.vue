@@ -11,9 +11,20 @@
         「{{ item.title }}」を削除しますか？
       </v-card-text>
       <v-card-actions>
+        <v-btn
+          :disabled="loading"
+          @click="onClickClose"
+        >
+          キャンセル
+        </v-btn>
         <v-spacer/>
-        <v-btn color="grey" text :disabled="loading" @click="onClickClose">キャンセル</v-btn>
-        <v-btn color="red" text :loading="loading" @click="onClickDelete">削除</v-btn>
+        <v-btn
+          color="error"
+          :loading="loading"
+          @click="onClickDelete"
+        >
+          削除
+        </v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
