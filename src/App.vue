@@ -22,6 +22,8 @@
     <v-main>
       <router-view/>
     </v-main>
+    <!-- スナックバー -->
+    <v-snackbar v-model="snackbar" color="error">{{ errorMessage }}</v-snackbar>
   </v-app>
 </template>
 
@@ -31,9 +33,22 @@ import { mapState } from 'vuex'
 export default {
   name: 'App',
 
+  data () {
+    return {
+      snackbar: false
+    }
+  },
+
   computed: mapState({
-    appName: state => state.settings.appName
+    appName: state => state.settings.appName,
+    errorMessage: state => state.errorMessage
   }),
+
+  watch: {
+    errorMessage () {
+      this.snackbar = true
+    }
+  },
 
   // Appインスタンス生成前に一度だけ実行されます
   beforeCreate () {
