@@ -5,6 +5,7 @@
       app
       color="green"
       dark
+      dense
     >
       <!-- タイトル -->
       <v-toolbar-title>{{ appName }}</v-toolbar-title>

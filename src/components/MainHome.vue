@@ -42,6 +42,7 @@
         <v-col class="text-right" cols="4">
           <v-btn dark color="green" @click="onClickAdd">
             <v-icon>mdi-plus</v-icon>
+            追加
           </v-btn>
         </v-col>
         <!-- 収支総計 -->
@@ -82,7 +83,7 @@
           <v-text-field
             v-model="search"
             append-icon="mdi-magnify"
-            label="Search"
+            label="検索"
             single-line
             hide-details
           />
@@ -100,6 +101,8 @@
         :sort-desc="true"
         :items-per-page="30"
         mobile-breakpoint="0"
+        no-data-text="データがありません"
+        no-results-text="該当するデータがありません"
       >
         <!-- 日付列 -->
         <template v-slot:item.date="{ item }">
@@ -134,6 +137,7 @@
             mdi-pencil
           </v-icon>
           <v-icon
+            color="error"
             @click="onClickDelete(item)"
           >
             mdi-delete
