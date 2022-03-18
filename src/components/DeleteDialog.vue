@@ -6,8 +6,12 @@
     max-width="290"
   >
     <v-card>
-      <v-card-title/>
-      <v-card-text class="black--text">
+      <v-card-title
+        class="dialog-title"
+      >
+        削除確認
+      </v-card-title>
+      <v-card-text class="black--text mt-1">
         「{{ item.title }}」を削除しますか？
       </v-card-text>
       <v-card-actions>
@@ -74,3 +78,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+.dialog-title {
+  background-color: #4CAF50;
+  color: white;
+}
+.v-card__title {
+  font-weight: bold !important;
+}
+
+</style>
