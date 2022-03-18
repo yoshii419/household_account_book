@@ -1,5 +1,5 @@
 <template>
-  <div class="form-wrapper">
+  <div class="form-wrapper mt-4">
     <p>※設定はこのデバイスのみに保存されます。</p>
     <v-form v-model="valid">
       <h3>アプリ設定</h3>
