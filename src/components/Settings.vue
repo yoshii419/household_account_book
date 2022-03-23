@@ -1,58 +1,67 @@
 <template>
-  <div class="form-wrapper mt-4">
-    <p>※設定はこのデバイスのみに保存されます。</p>
+  <v-card class="mt-4">
     <v-form v-model="valid">
-      <h3>アプリ設定</h3>
-      <!-- アプリ名 -->
-      <v-text-field
-        label="アプリ名"
-        v-model="settings.appName"
-        :counter="30"
-        :rules="[appNameRule]"
-      />
-      <!-- API URL -->
-      <v-text-field
-        label="API URL"
-        v-model="settings.apiUrl"
-        :counter="150"
-        :rules="[stringRule]"
-      />
-      <!-- Auth Token -->
-      <v-text-field
-        label="Auth Token"
-        v-model="settings.authToken"
-        :counter="150"
-        :rules="[stringRule]"
-      />
-      <h3>カテゴリ／タグ設定</h3>
-      <p>カンマ（ &#44; ）区切りで入力してください。</p>
-      <!-- 収入カテゴリ -->
-      <v-text-field
-        label="収入カテゴリ"
-        v-model="settings.strIncomeItems"
-        :counter="150"
-        :rules="[stringRule, ...categoryRules]"
-      />
-      <!-- 支出カテゴリ -->
-      <v-text-field
-        label="支出カテゴリ"
-        v-model="settings.strOutgoItems"
-        :counter="150"
-        :rules="[stringRule, ...categoryRules]"
-      />
-      <!-- タグ -->
-      <v-text-field
-        label="タグ"
-        v-model="settings.strTagItems"
-        :counter="150"
-        :rules="[stringRule, tagRule]"
-      />
-      <v-row class="mt-4">
-        <v-spacer/>
-        <v-btn color="primary" :disabled="!valid" @click="onClickSave">保存</v-btn>
-      </v-row>
+      <v-card-title class="card-title">アプリ設定</v-card-title>
+      <v-card-subtitle>※設定はこのデバイスのみに保存されます。</v-card-subtitle>
+      <v-card-text>
+        <!-- アプリ名 -->
+        <v-text-field
+          label="アプリ名"
+          v-model="settings.appName"
+          :counter="30"
+          :rules="[appNameRule]"
+        />
+        <!-- API URL -->
+        <v-text-field
+          label="API URL"
+          v-model="settings.apiUrl"
+          :counter="150"
+          :rules="[stringRule]"
+        />
+        <!-- Auth Token -->
+        <v-text-field
+          label="Auth Token"
+          v-model="settings.authToken"
+          :counter="150"
+          :rules="[stringRule]"
+        />
+        <h3>カテゴリ／タグ設定</h3>
+        <p class="error--text">※カンマ（ &#44; ）区切りで入力してください。</p>
+        <!-- 収入カテゴリ -->
+        <v-text-field
+          label="収入カテゴリ"
+          v-model="settings.strIncomeItems"
+          :counter="150"
+          :rules="[stringRule, ...categoryRules]"
+        />
+        <!-- 支出カテゴリ -->
+        <v-text-field
+          label="支出カテゴリ"
+          v-model="settings.strOutgoItems"
+          :counter="150"
+          :rules="[stringRule, ...categoryRules]"
+        />
+        <!-- タグ -->
+        <v-text-field
+          label="タグ"
+          v-model="settings.strTagItems"
+          :counter="150"
+          :rules="[stringRule, tagRule]"
+        />
+      </v-card-text>
+      <v-card-actions class="mt-4">
+        <v-spacer />
+        <v-btn
+          class=""
+          color="primary"
+          :disabled="!valid"
+          @click="onClickSave"
+        >
+          保存
+        </v-btn>
+      </v-card-actions>
     </v-form>
-  </div>
+  </v-card>
 </template>
 
 <script>
@@ -90,8 +99,8 @@ export default {
 </script>
 
 <style scoped>
-.form-wrapper {
-  max-width: 500px;
-  margin: auto;
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
 }
 </style>
