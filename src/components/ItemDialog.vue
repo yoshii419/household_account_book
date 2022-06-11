@@ -8,7 +8,11 @@
     eager
   >
     <v-card>
-      <v-card-title>{{ titleText }}</v-card-title>
+      <v-card-title
+        class="dialog-title"
+      >
+        {{ titleText }}
+      </v-card-title>
       <v-divider/>
       <v-card-text>
         <v-form ref="form" v-model="valid">
@@ -84,6 +88,9 @@
             v-model.number="amount"
             prefix="￥"
             pattern="[0-9]*"
+            type="number"
+            class="number-input"
+            :counter="8"
             :rules="amountRules"
           />
           <!-- メモ -->
@@ -274,3 +281,19 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+.dialog-title {
+  background-color: #4CAF50;
+  color: white;
+}
+.v-card__title {
+  font-weight: bold !important;
+}
+
+.number-input .v-input input {
+  text-align: right;
+}
+
+</style>

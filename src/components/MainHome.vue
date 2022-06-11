@@ -100,7 +100,8 @@
         :sort-by="'date'"
         :sort-desc="true"
         :items-per-page="30"
-        mobile-breakpoint="0"
+        color="primary"
+        loading-text="ロード中"
         no-data-text="データがありません"
         no-results-text="該当するデータがありません"
       >
@@ -302,5 +303,24 @@
     font-size: 0.8rem;
     white-space: nowrap;
     line-height: 1.2rem;
+  }
+
+  .v-data-table th {
+    background: #4CAF50;
+  }
+  .v-data-table thead span {
+    color: #fff;
+  }
+  .v-data-table .v-data-table-header__icon::before {
+    color: #fff;
+  }
+  .v-data-table td {
+    background: #f0f8ff;
+  }
+  .v-data-table tr:nth-child(odd) td {
+    background: #fff;
+  }
+  .v-data-table tr:hover td {
+    background-color: #eee;
   }
 </style>
